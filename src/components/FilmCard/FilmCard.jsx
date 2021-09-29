@@ -58,7 +58,7 @@ export default function FilmCard() {
 
   return (
     <>
-      {location?.state?.from && (
+      {location?.state && (
         <StyledBtn type="button" onClick={onGoBackClick}>
           Go Back
         </StyledBtn>
