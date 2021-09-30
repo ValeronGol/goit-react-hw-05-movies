@@ -8,6 +8,7 @@ import {
   useLocation,
 } from 'react-router-dom';
 import { getMovieById } from 'services/apiMovie';
+import { LoaderMore } from 'components/Loader/Loader';
 import {
   MovieDetailes,
   StyledImg,
@@ -18,9 +19,13 @@ import {
   StyledUl,
 } from './FilmCard.styled';
 
-const Cast = lazy(() => import('../Cast/Cast' /* webpackChunkName: "Cast" */));
+const Cast = lazy(() =>
+  import('components/Cast/Cast' /* webpackChunkName: "Cast" */),
+);
 const FilmReviews = lazy(() =>
-  import('../FilmReviews/FilmReviews' /* webpackChunkName: "FilmReviews" */),
+  import(
+    'components/FilmReviews/FilmReviews' /* webpackChunkName: "FilmReviews" */
+  ),
 );
 
 export default function FilmCard() {
@@ -115,7 +120,7 @@ export default function FilmCard() {
           </li>
         </StyledUl>
       </div>
-      <Suspense fallback={<h1>LOADING...</h1>}>
+      <Suspense fallback={<LoaderMore />}>
         <Switch>
           <Route path={`${path}/cast`}>
             <Cast movieId={movieId} baseImg={imgBaseUrl} noImg={imgNotFound} />
