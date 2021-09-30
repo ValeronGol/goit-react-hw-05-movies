@@ -1,7 +1,8 @@
 import { lazy, Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Navigation from 'components/Navigation/Navigation.jsx';
-import { ConteinerApp, TitleApp } from './App.styled';
+import { LoaderMore } from 'components/Loader/Loader';
+import { ConteinerApp } from './App.styled';
 
 const FilmCard = lazy(() =>
   import('components/FilmCard/FilmCard' /* webpackChunkName: "FilmCard" */),
@@ -20,8 +21,7 @@ export default function App() {
   return (
     <ConteinerApp>
       <Navigation />
-
-      <Suspense fallback={<TitleApp>loading...</TitleApp>}>
+      <Suspense fallback={<LoaderMore />}>
         <Switch>
           <Route exact path="/">
             <HomePage />
