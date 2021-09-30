@@ -33,6 +33,7 @@ export default function Cast({ movieId, baseImg, noImg }) {
           })}
         </StyledUl>
       )}
+      <h2>Not Cast</h2>
     </>
   );
 }
