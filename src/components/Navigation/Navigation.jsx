@@ -3,12 +3,10 @@ import { StyledNav, StyledNavLink } from './Navigation.styled';
 export default function Navigation() {
   return (
     <StyledNav>
-      <StyledNavLink exact to="/" activeStyle={{ color: '#472b7a' }}>
+      <StyledNavLink exact to="/">
         Home
       </StyledNavLink>
-      <StyledNavLink to="/movies" activeStyle={{ color: '#472b7a' }}>
-        Movies
-      </StyledNavLink>
+      <StyledNavLink to="/movies">Movies</StyledNavLink>
     </StyledNav>
   );
 }
