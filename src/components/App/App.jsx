@@ -4,16 +4,16 @@ import Navigation from 'components/Navigation/Navigation.jsx';
 import { LoaderMore } from 'components/Loader/Loader';
 import { ConteinerApp } from './App.styled';
 
-const FilmCard = lazy(() =>
+const AsyncFilmCard = lazy(() =>
   import('components/FilmCard/FilmCard' /* webpackChunkName: "FilmCard" */),
 );
-const HomePage = lazy(() =>
+const AsyncHomePage = lazy(() =>
   import('pages/HomePage' /* webpackChunkName: "HomePage" */),
 );
-const MoviesPages = lazy(() =>
+const AsyncMoviesPages = lazy(() =>
   import('pages/MoviesPage' /* webpackChunkName: "MoviesPages" */),
 );
-const NotFound = lazy(() =>
+const AsyncNotFound = lazy(() =>
   import('pages/NotFoundPage' /* webpackChunkName: "NotFoundPage" */),
 );
 
@@ -23,18 +23,10 @@ export default function App() {
       <Navigation />
       <Suspense fallback={<LoaderMore />}>
         <Switch>
-          <Route exact path="/">
-            <HomePage />
-          </Route>
-          <Route exact path="/movies">
-            <MoviesPages />
-          </Route>
-          <Route path="/movies/:movieId">
-            <FilmCard />
-          </Route>
-          <Route>
-            <NotFound />
-          </Route>
+          <Route exact path="/" component={AsyncHomePage} />
+          <Route exact path="/movies" component={AsyncMoviesPages} />
+          <Route path="/movies/:movieId" component={AsyncFilmCard} />
+          <Route component={AsyncNotFound} />
         </Switch>
       </Suspense>
     </ConteinerApp>

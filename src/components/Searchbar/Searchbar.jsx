@@ -13,9 +13,8 @@ export default function Searchbar({ onSubmit }) {
     e.preventDefault();
     if (searchValue.trim() === '') {
       return;
-    } else {
-      onSubmit(searchValue);
     }
+    onSubmit(searchValue);
   };
 
   return (
